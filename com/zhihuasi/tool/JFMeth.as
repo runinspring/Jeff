@@ -41,5 +41,55 @@ package com.zhihuasi.tool
 		{
 			return _arr.sort(function():int{return Math.random()>.5?1:-1});
 		}
+		/**
+		 * 判断对象是否在数组中
+		 * @param _target 传递进来的目标
+		 * */
+		public static function InArray(_target:Object,_arr:Array):Boolean
+		{
+			var _boo:Boolean = false;
+			if(_arr.length ==0){ _boo = false;}
+			else{
+				for(var i:int = _arr.length-1; i>=0; i--){
+					if(_target == _arr[i]){ _boo = true; break;}					
+				}
+			}
+			return _boo;
+		}
+		/**
+		 * 数字转换成加上逗号的字符串
+		 * @param _value 要转换的数字
+		 **/
+		public static function addDot(_value:Number):String{
+			var _arr:Array = _value.toString().split("");
+			var _len:uint = _arr.length;
+			var j:uint=0;
+			var _arr2:Array = new Array();
+			for(var i:uint=_len;i>0;i--){
+				if(j%3==0 && j!=_len && j>0){
+					_arr2.unshift(",");
+				}
+				_arr2.unshift(_arr.pop());
+				j++;
+			}
+			return _arr2.join("");
+		}
+		/**
+		 * 计算数组中有几个传入的对象
+		 * @param _target 判断的对象 
+		 * @param _arr 数组
+		 * @return 几个同样的对象
+		 * 
+		 */		
+		public static function indexOfTotal(_target:Object,_arr:Array):uint{
+			var _num:uint;
+			var _len:uint = _arr.length;
+			for(var i:uint=0;i<_len;i++){
+				if(_arr[i] == _target){
+					_num+=1;
+				}
+			}
+			return _num;
+		}
 	}
 }

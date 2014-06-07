@@ -17,6 +17,7 @@ package com.zhihuasi.tool
 		
 		private static const arrLightDarkData:Array = [1, 0, 0, 0, -10, 0, 1, 0, 0, -10, 0, 0, 1, 0, -10, 0, 0, 0, 1, 0];
 		private static const cmfLightDark:ColorMatrixFilter = new ColorMatrixFilter(arrLightDarkData);
+		
 		public function JFFliter() 
 		{
 			
