@@ -21,7 +21,7 @@ package com.zhihuasi.object
 			var bmp:Bitmap = new Bitmap(_data); 
 			bmp.smoothing = true;
 			container.addChild(bmp);
-			bmp.x = -bmp.width / 2; bmp.y = -bmp.height / 2;
+			bmp.x = -uint(bmp.width / 2); bmp.y = -uint(bmp.height / 2);
 			this.buttonMode = true;
 			this.addEventListener(MouseEvent.MOUSE_DOWN, onDown);
 			this.addEventListener(MouseEvent.MOUSE_UP, onUp);
