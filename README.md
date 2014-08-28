@@ -1,1 +1,3 @@
-zxing ¶şÎ¬ÂëÉú³É¹¤¾ß https://github.com/zxing/zxing/
+zxing.zip 
+äºŒç»´ç ç”Ÿæˆå·¥å…·
+https://github.com/zxing/zxing/
