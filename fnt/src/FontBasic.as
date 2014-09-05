@@ -77,6 +77,10 @@ package
 			var posx:uint = 0;
 			for (var i:uint = 0; i < len; i++) {
 				char = arr[i]
+				if(char==" "){
+					posx += uint(fnt[char].xadvance);
+					continue;
+				}
 				bmp = FNTBmp.getBMP(bmd, fnt, char);
 				if (smooth) bmp.smoothing = true;
 				//trace("char:",char,bmp.width)

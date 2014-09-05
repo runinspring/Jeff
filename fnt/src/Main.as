@@ -24,9 +24,11 @@ package
 		[Embed(source="ass/font_white.png")]
 		private var png_white:Class;
 		public function Main() {
-			var f:FontBasic = new FontBasic(bmd_blue, obj_blue, true, true, true);			
+			var f:FontBasic = new FontBasic(bmd_white, obj_white, true, true, true);			
 			addChild(f);
-			f.number = 45645;
+			//f.number = 45645;
+			f.string = "asa ds";
+			trace(f.width)
 		}
 		public function get obj_blue():Object { return FNTAnalyzer.analyze(new fnt_blue); }
 		public function get bmd_blue():BitmapData { return (new png_blue() as Bitmap).bitmapData; }

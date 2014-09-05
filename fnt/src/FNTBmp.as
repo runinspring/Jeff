@@ -18,8 +18,14 @@ package
 		 * @return
 		 */
 		public static function getBMP(_sourceBMD:BitmapData, _fntObj:Object, _str:String):Bitmap {
-			var bmd:BitmapData = new BitmapData(_fntObj[_str].width+_fntObj[_str].xoffset, _fntObj[_str].height+_fntObj[_str].yoffset, true,0);
-			bmd.copyPixels(_sourceBMD, new Rectangle(_fntObj[_str].x, _fntObj[_str].y, _fntObj[_str].width, _fntObj[_str].height), new Point(_fntObj[_str].xoffset, _fntObj[_str].yoffset));
+			var wid:uint = uint(_fntObj[_str].width);
+			var hei:uint = uint(_fntObj[_str].height);
+			var offx:uint = uint(_fntObj[_str].xoffset);
+			var offy:uint = uint(_fntObj[_str].yoffset);
+			var px:uint = uint(_fntObj[_str].x);
+			var py:uint = uint(_fntObj[_str].y);
+			var bmd:BitmapData = new BitmapData(wid+offx,hei+offy, true,0);
+			bmd.copyPixels(_sourceBMD, new Rectangle(px,py,wid,hei),new Point(offx, offy));
 			return new Bitmap(bmd);
 		}
 	}
