@@ -4,6 +4,7 @@ package com.zhihuasi.object
 	
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
+	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	
@@ -26,6 +27,13 @@ package com.zhihuasi.object
 			this.addEventListener(MouseEvent.MOUSE_DOWN, onDown);
 			this.addEventListener(MouseEvent.MOUSE_UP, onUp);
 			this.addEventListener(MouseEvent.MOUSE_OUT, onOut);
+		}
+		public function addBMP(item:Bitmap):void{//往按钮里添加图片
+			item.smoothing = true;
+			container.addChild(item);
+		}
+		public function addItem(item:DisplayObject):void{//往按钮里添加内容
+			container.addChild(item);
 		}
 		private function onOut(e:MouseEvent):void 
 		{

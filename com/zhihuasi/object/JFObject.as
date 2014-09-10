@@ -2,10 +2,23 @@ package com.zhihuasi.object
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 
 	public class JFObject
 	{
+		/**
+		 * 画一个有颜色的shape
+		 * */
+		public static function ColorShape(_color:int,_wid:uint,_hei:uint,_center:Boolean = false):Shape
+		{
+			var sp:Shape = new Shape();
+			sp.graphics.beginFill(_color);
+			sp.graphics.drawRect(0,0,_wid,_hei);
+			sp.graphics.endFill();
+			if(_center){sp.x = -uint(sp.width/2); sp.y = -uint(sp.height/2);}
+			return sp;
+		}
 		/**
 		 * 画一个有颜色的图形
 		 * */
@@ -19,7 +32,7 @@ package com.zhihuasi.object
 			return sp;
 		}
 		/**
-		 * 传入bmpData 生成一个居中对齐的sprite
+		 * 传入bmpData 生成一个sprite
 		 * */
 		public static function BmpDataSprite(_bmpData:BitmapData,_center:Boolean = true,_smooth:Boolean = false):Sprite
 		{
