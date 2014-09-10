@@ -11,6 +11,7 @@ package com.zhihuasi.object
 	public class JFButton extends Sprite
 	{
 		private var container:Sprite;
+		private var containerAdd:Sprite;//添加的内容
 		private var _allowTouch:Boolean = true;
 		public var _allowDown:Boolean = true;//可以有点击效果
 		public var id:uint;
@@ -29,11 +30,16 @@ package com.zhihuasi.object
 			this.addEventListener(MouseEvent.MOUSE_OUT, onOut);
 		}
 		public function addBMP(item:Bitmap):void{//往按钮里添加图片
+			if(!containerAdd) containerAdd = new Sprite(); container.addChild(containerAdd);
 			item.smoothing = true;
-			container.addChild(item);
+			containerAdd.addChild(item);
 		}
 		public function addItem(item:DisplayObject):void{//往按钮里添加内容
-			container.addChild(item);
+			if(!containerAdd) containerAdd = new Sprite(); container.addChild(containerAdd);
+			containerAdd.addChild(item);
+		}
+		public function cleanItem():void{
+			if(containerAdd) containerAdd.removeChildren();
 		}
 		private function onOut(e:MouseEvent):void 
 		{
