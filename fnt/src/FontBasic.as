@@ -1,4 +1,4 @@
-package  
+package framslots.tools.fonts 
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -14,15 +14,18 @@ package
 		protected var numOld:Number = -999, oldStr:String = "", type:String = "";
 		protected var numNow:Number;//当前显示的数字
 		private var container:Sprite;
-		public function FontBasic(_bmd:BitmapData,_fnt:Object,_double0:Boolean = false,_smooth:Boolean = false,_point:Boolean = false,_align:String="left")
+		private var arrLines:Array;//存放每一行文字的数组
+		private var rowPitch:uint;//增加的行距
+		public function FontBasic(_bmd:BitmapData,_fnt:Object,_double0:Boolean = false,_smooth:Boolean = false,_point:Boolean = false,_align:String="left",rowPitch:uint=0)
 		{
 			bmd = _bmd; fnt = _fnt; double0 = _double0; smooth = _smooth; point = _point; align = _align;
-			container = new Sprite(); addChild(container);
+			container = new Sprite(); addChild(container); arrLines = new Array();
 		}
 		public function clean():void {
 			bmd = null; fnt = null;
 			container.removeChildren();
 			removeChild(container);
+			container = null;
 		}
 		public function set number(_num:Number):void {
 			if (numOld != _num) {
@@ -70,37 +73,47 @@ package
 		protected function renderStop():void {}
 		
 		protected function render(_str:String):void {
-			if (container) { container.removeChildren(); }
+			container.removeChildren(); arrLines = new Array();
 			var arr:Array = _str.split("");
 			var len:uint = arr.length;
 			var bmp:Bitmap; var char:String;
 			var posx:uint = 0;
+			var line:Sprite = new Sprite(); container.addChild(line); arrLines.push(line)//一行文字
 			for (var i:uint = 0; i < len; i++) {
 				char = arr[i]
 				if(char==" "){
 					posx += uint(fnt[char].xadvance);
 					continue;
 				}
-				bmp = FNTBmp.getBMP(bmd, fnt, char);
-				if (smooth) bmp.smoothing = true;
-				//trace("char:",char,bmp.width)
-				container.addChild(bmp); bmp.x = posx;
-				//trace(container.width)
-				posx += uint(fnt[char].xadvance);
+				if (char == "/" && arr[i + 1] == "r") {//换行符
+					line = new Sprite(); container.addChild(line); arrLines.push(line)//一行文字
+					posx = 0;
+					i++;
+				}else {
+					bmp = FNTBmp.getBMP(bmd, fnt, char);
+					if (smooth) bmp.smoothing = true;
+					line.addChild(bmp); bmp.x = posx;
+					posx += uint(fnt[char].xadvance);	
+				}
 			}
-			switch (align) {
-				case "center":
-					//trace(container.width)
-					container.x = -uint(container.width / 2);
-					break;
-				case "left":
-					container.x = 0;
-					break;
-				case "right":
-					container.x = -uint(container.width);
-					break;
+			len = arrLines.length;
+			var py:uint = 0;
+			for (i = 0; i < len; i++) {
+				var l:Sprite = arrLines[i];
+				l.y = py;
+				switch (align) {
+					case "center":
+						l.x = -uint(l.width / 2);
+						break;
+					case "left":
+						l.x = 0;
+						break;
+					case "right":
+						l.x = -uint(l.width);
+						break;
+				}
+				py += (l.height+rowPitch);//增加行距
 			}
 		}
-		
 	}
 }
