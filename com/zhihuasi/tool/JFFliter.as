@@ -11,7 +11,10 @@ package com.zhihuasi.tool
 		private static const arrDarkData:Array = [1, 0, 0, 0, -80, 0, 1, 0, 0, -80, 0, 0, 1, 0, -80, 0, 0, 0, 1, 0];
 		private static const cmfDark:ColorMatrixFilter = new ColorMatrixFilter(arrDarkData);
 		
-		//private static const arrNormal:Array = [new ColorMatrixFilter(arrNormalData)];
+		//自定义亮度
+		private static var arrBrightData:Array = [1, 0, 0, 0, -80, 0, 1, 0, 0, -80, 0, 0, 1, 0, -80, 0, 0, 0, 1, 0];
+		private static var cmfBright:ColorMatrixFilter;// = new ColorMatrixFilter(arrDarkData);
+		
 		private static const arrNormalData:Array = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0];
 		private static const cmfNormal:ColorMatrixFilter = new ColorMatrixFilter(arrNormalData);
 		
@@ -24,21 +27,21 @@ package com.zhihuasi.tool
 		}
 		public static function get Dark():Array
 		{
-			var arr:Array = new Array();
-			arr.push(cmfDark);
-			return arr;
+			return [cmfDark];
+		}
+		public static function setBright(value:int):Array {
+			arrBrightData[4] = arrBrightData[9] = arrBrightData[14] = value;
+			cmfBright = new ColorMatrixFilter(arrBrightData);
+			return [cmfBright];
 		}
 		public static function get LightDark():Array
 		{//轻的暗色
-			var arr:Array = new Array();
-			arr.push(cmfLightDark);
-			return arr;
+			return [cmfLightDark];
 		}
 		public static function get Normal():Array
 		{
-			var arr:Array = new Array();
-			arr.push(cmfNormal);
-			return arr;
+			return [cmfNormal];
 		}
+		
 	}
 }
