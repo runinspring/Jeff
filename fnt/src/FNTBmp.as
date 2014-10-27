@@ -20,8 +20,8 @@ package
 		public static function getBMP(_sourceBMD:BitmapData, _fntObj:Object, _str:String):Bitmap {
 			var wid:uint = uint(_fntObj[_str].width);
 			var hei:uint = uint(_fntObj[_str].height);
-			var offx:uint = uint(_fntObj[_str].xoffset);
-			var offy:uint = uint(_fntObj[_str].yoffset);
+			var offx:int = int(_fntObj[_str].xoffset);
+			var offy:int = int(_fntObj[_str].yoffset);
 			var px:uint = uint(_fntObj[_str].x);
 			var py:uint = uint(_fntObj[_str].y);
 			var bmd:BitmapData = new BitmapData(wid+offx,hei+offy, true,0);

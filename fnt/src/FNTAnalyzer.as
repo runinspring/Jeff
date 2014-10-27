@@ -12,7 +12,7 @@ package
 			var arr:Array = _str.split("char ");
 			var len:uint = arr.length;
 			var str2:String;
-			var num1:uint, num2:uint;
+			var num1:int, num2:int;
 			var letter:String;
 			for (var i:uint = 1; i < len; i++) {
 				str2 = arr[i];

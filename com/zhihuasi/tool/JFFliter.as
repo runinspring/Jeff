@@ -43,5 +43,12 @@ package com.zhihuasi.tool
 			return [cmfNormal];
 		}
 		
+		public static function get Red():Array { return [cmfRed]; }
+		private static const arrRedData:Array = [
+		1, 0, 0, 0, 255, 
+		0, 1, 0, 0, 0, 
+		0, 0, 1, 0, 0, 
+		0, 0, 0, 1, 0];
+		private static const cmfRed:ColorMatrixFilter = new ColorMatrixFilter(arrRedData);
 	}
 }
