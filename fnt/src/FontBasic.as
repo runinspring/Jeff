@@ -74,6 +74,7 @@ package framslots.tools.fonts
 		
 		protected function render(_str:String):void {
 			container.removeChildren(); arrLines = new Array();
+			if(_str=="") return;
 			var arr:Array = _str.split("");
 			var len:uint = arr.length;
 			var bmp:Bitmap; var char:String;

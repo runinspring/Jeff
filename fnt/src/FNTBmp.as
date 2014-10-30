@@ -18,6 +18,9 @@ package
 		 * @return
 		 */
 		public static function getBMP(_sourceBMD:BitmapData, _fntObj:Object, _str:String):Bitmap {
+			if (!_fntObj[_str]) {
+				trace("未定义的文字,文字:", _str);
+			}
 			var wid:uint = uint(_fntObj[_str].width);
 			var hei:uint = uint(_fntObj[_str].height);
 			var offx:int = int(_fntObj[_str].xoffset);
