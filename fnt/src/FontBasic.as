@@ -16,9 +16,9 @@ package framslots.tools.fonts
 		private var container:Sprite;
 		private var arrLines:Array;//存放每一行文字的数组
 		private var rowPitch:uint;//增加的行距
-		public function FontBasic(_bmd:BitmapData,_fnt:Object,_double0:Boolean = false,_smooth:Boolean = false,_point:Boolean = false,_align:String="left",rowPitch:uint=0)
+		public function FontBasic(_bmd:BitmapData,_fnt:Object,_double0:Boolean = false,_smooth:Boolean = false,_point:Boolean = false,_align:String="left",_rowPitch:uint=0)
 		{
-			bmd = _bmd; fnt = _fnt; double0 = _double0; smooth = _smooth; point = _point; align = _align;
+			bmd = _bmd; fnt = _fnt; double0 = _double0; smooth = _smooth; point = _point; align = _align; rowPitch = _rowPitch;
 			container = new Sprite(); addChild(container); arrLines = new Array();
 		}
 		public function clean():void {
